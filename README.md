@@ -2,44 +2,63 @@
 
 A RESTful backend API for a CRM Sales Management System built using Node.js, Express.js, MongoDB, Mongoose and JWT authentication.
 
-The system provides functionality for:
-
-- User management
-- Authentication and authorization
-- Lead management
-- Lead conversion
-- Customer management
-- Deal management
-- Follow-up activities
-- Dashboard statistics
-- Validation
-- Pagination
-- Filtering
-- Sorting
-- Centralized error handling
+The application provides APIs for managing users, leads, customers, deals and sales activities with authentication, role-based authorization, validation, filtering, sorting, pagination and centralized error handling.
 
 ---
 
-## 1. Technology Stack
+## 1. Features
+
+- User registration and login
+- JWT-based authentication
+- Role-based authorization
+- Admin and Sales Executive roles
+- User management
+- User activation/deactivation
+- Lead management
+- Lead assignment
+- Lead status management
+- Lead conversion to customer
+- Customer management
+- Deal management
+- Deal stage management
+- Sales activity management
+- Activity completion
+- Dashboard statistics
+- Search and filtering
+- Pagination
+- Sorting
+- Date-range filtering
+- Duplicate record prevention
+- Request validation
+- Centralized error handling
+- Password hashing using bcryptjs
+- MongoDB database with Mongoose
+- RESTful API architecture
+
+---
+
+## 2. Technology Stack
 
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
-- JWT
+- JSON Web Token (JWT)
 - bcryptjs
-- REST API
+- CORS
+- Cookie Parser
 - Postman
+- Render
 
 ---
 
-## 2. User Roles
+## 3. User Roles
 
-The application supports two roles:
+The application supports two user roles:
 
 ### Admin
 
-Admin users can:
+Admins can:
 
 - Manage users
 - View all leads
@@ -65,7 +84,7 @@ Sales Executives cannot access or modify resources belonging to other users.
 
 ---
 
-## 3. Project Structure
+# 4. Project Structure
 
 ```text
 src/
