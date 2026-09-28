@@ -29,7 +29,7 @@ const leadResponse = (lead) => ({
 });
 
 const getLeads = asyncHandler(async (req, res) => {
-  const result = await listLeads(req.query);
+  const result = await listLeads(req.query, req.user.userId, req.user.role);
 
   res.status(200).json(
     new ApiResponse(200, "Leads fetched successfully", {
@@ -40,7 +40,7 @@ const getLeads = asyncHandler(async (req, res) => {
 });
 
 const getLead = asyncHandler(async (req, res) => {
-  const lead = await getLeadById(req.params.id);
+  const lead = await getLeadById(req.params.id, req.user.userId, req.user.role);
 
   res
     .status(200)
@@ -62,17 +62,21 @@ const addLead = asyncHandler(async (req, res) => {
     notes,
   } = req.body;
 
-  const lead = await createLead({
-    name,
-    email,
-    phone,
-    company,
-    source,
-    status,
-    priority,
-    assignedTo,
-    notes,
-  });
+  const lead = await createLead(
+    {
+      name,
+      email,
+      phone,
+      company,
+      source,
+      status,
+      priority,
+      assignedTo,
+      notes,
+    },
+    req.user.userId,
+    req.user.role,
+  );
 
   res
     .status(201)
@@ -94,17 +98,22 @@ const editLead = asyncHandler(async (req, res) => {
     notes,
   } = req.body;
 
-  const lead = await updateLead(req.params.id, {
-    name,
-    email,
-    phone,
-    company,
-    source,
-    status,
-    priority,
-    assignedTo,
-    notes,
-  });
+  const lead = await updateLead(
+    req.params.id,
+    {
+      name,
+      email,
+      phone,
+      company,
+      source,
+      status,
+      priority,
+      assignedTo,
+      notes,
+    },
+    req.user.userId,
+    req.user.role,
+  );
 
   res
     .status(200)
@@ -114,13 +123,18 @@ const editLead = asyncHandler(async (req, res) => {
 });
 
 const removeLead = asyncHandler(async (req, res) => {
-  await deleteLead(req.params.id);
+  await deleteLead(req.params.id, req.user.userId, req.user.role);
 
   res.status(200).json(new ApiResponse(200, "Lead deleted successfully"));
 });
 
 const changeLeadStatus = asyncHandler(async (req, res) => {
-  const lead = await updateLeadStatus(req.params.id, req.body.status);
+  const lead = await updateLeadStatus(
+    req.params.id,
+    req.body.status,
+    req.user.userId,
+    req.user.role,
+  );
 
   res
     .status(200)
@@ -134,7 +148,12 @@ const changeLeadStatus = asyncHandler(async (req, res) => {
 });
 
 const assignLeadToUser = asyncHandler(async (req, res) => {
-  const lead = await assignLead(req.params.id, req.body.assignedTo);
+  const lead = await assignLead(
+    req.params.id,
+    req.body.assignedTo,
+    req.user.userId,
+    req.user.role,
+  );
 
   res
     .status(200)
