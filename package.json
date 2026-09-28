@@ -1,0 +1,35 @@
+{
+  "name": "crm-sales-management",
+  "version": "1.0.0",
+  "description": "Backnd API for a CRM Sales Management System",
+  "keywords": [
+    "Express",
+    "Mongoose",
+    "Dotenv",
+    "JsonWebToken",
+    "Bcryptjs",
+    "Cookie-parser",
+    "Cors"
+  ],
+  "license": "ISC",
+  "author": "Shah Mohammad Ajmal",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "create-admin":"node src/scripts/createAdmin.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.2"
+  }
+}
