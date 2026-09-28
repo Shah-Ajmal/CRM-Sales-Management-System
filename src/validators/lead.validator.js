@@ -14,21 +14,21 @@ const validateLead = (req) => {
 
   const errors = [];
 
-  if (!isNonEmptyString(name)) {
+  if (name !== undefined && !isNonEmptyString(name)) {
     errors.push({
       field: "name",
       message: "Lead name is required",
     });
   }
 
-  if (!isValidEmail(email)) {
+  if (email !== undefined && !isValidEmail(email)) {
     errors.push({
       field: "email",
       message: "Valid email is required",
     });
   }
 
-  if (!isValidPhone(phone)) {
+  if (phone !== undefined && !isValidPhone(phone)) {
     errors.push({
       field: "phone",
       message: "Valid phone number is required",
