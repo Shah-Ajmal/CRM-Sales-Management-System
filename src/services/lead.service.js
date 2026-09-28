@@ -34,7 +34,7 @@ const validateLeadAccess = (lead, currentUserId, currentUserRole) => {
   // leads assigned to themselves
   if (
     !lead.assignedTo ||
-    lead.assignedTo.toString() !== currentUserId.toString()
+    lead.assignedTo._id.toString() !== currentUserId.toString()
   ) {
     throw new ApiError(403, "You do not have permission to access this lead");
   }

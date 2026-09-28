@@ -23,14 +23,18 @@ const router = Router();
 
 router.use(authenticate);
 
-router.get("/", validate(validateLead), getLeads);
-router.post("/", addLead);
+router.get("/", getLeads);
+
+router.post("/", validate(validateLead), addLead);
 
 router.get("/:id", getLead);
+
 router.patch("/:id", validate(validateLead), editLead);
+
 router.delete("/:id", removeLead);
 
 router.patch("/:id/status", validate(validateLeadStatus), changeLeadStatus);
+
 router.patch("/:id/assign", validate(validateLeadAssignment), assignLeadToUser);
 
 export default router;
