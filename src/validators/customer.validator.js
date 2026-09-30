@@ -10,28 +10,32 @@ const validateCustomer = (req) => {
 
   const errors = [];
 
-  if (!isNonEmptyString(name)) {
+  if (name !== undefined && !isNonEmptyString(name)) {
     errors.push({
       field: "name",
       message: "Customer name is required",
     });
   }
 
-  if (!isValidEmail(email)) {
+  if (email !== undefined && !isValidEmail(email)) {
     errors.push({
       field: "email",
       message: "Valid email is required",
     });
   }
 
-  if (!isValidPhone(phone)) {
+  if (phone !== undefined && !isValidPhone(phone)) {
     errors.push({
       field: "phone",
       message: "Valid phone number is required",
     });
   }
 
-  if (assignedTo !== undefined && !isValidObjectId(assignedTo)) {
+  if (
+    assignedTo !== undefined &&
+    assignedTo !== null &&
+    !isValidObjectId(assignedTo)
+  ) {
     errors.push({
       field: "assignedTo",
       message: "Invalid assigned user ID",
